@@ -1,0 +1,33 @@
+{
+  "measured_at_utc": "2026-09-29T23:24:23.651908+00:00",
+  "system": "Linux",
+  "release": "6.18.44",
+  "machine": "x86_64",
+  "processor": "x86_64",
+  "cpu_model": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "python": "3.12.14",
+  "program_environment": [
+    "implementation: C17, instrumented sorting (counters included in time)",
+    "compiler: 13.3.0",
+    "build_flags: -std=c17 -Wall -Wextra -Wpedantic -O2",
+    "sizeof_Record: 16 bytes (includes padding)",
+    "sizeof_int: 4; sizeof_size_t: 8",
+    "clock: process CPU time; CLOCKS_PER_SEC=1000000",
+    "base_seed: 20260930; case_seed=base_seed+n",
+    "repetitions: 5 (same input on each repeat)",
+    "random generator: xorshift32; shuffle: Fisher-Yates using modulo",
+    "few_unique keys: 0..15; other shapes: permutation of 0..n-1",
+    "extra_record_bytes excludes indices, pointers, call stack and benchmark buffers"
+  ],
+  "source_sha256": {
+    "src/bench.c": "c274085b03b725fd552f20f30030ad3cd59c631e3b1dd795602a775b37f9017d",
+    "src/bench.h": "c7ed8861b6b75a82f2382b1c4d7815c0c60cf60bd0df5d98375abf5c12821a62",
+    "src/heapSort.c": "3501734beb6b840cbbcc6746173130b93f1de08b10e357418bf220e41830572c",
+    "src/insertionSort.c": "843e3efcf29afab6c697f9cb07424f39ec6df22971cf2ca8429546f815c4dff3",
+    "src/main.c": "e08adf698be7b8f578a7c008c5ecf433c2d7416407a475c5ea7675fb6df9ebde",
+    "src/mergeSort.c": "37d46fd72568416d480e28f193188bfa205f3bda77f300b793a24b2920247e5f",
+    "src/sort.c": "7902ff56b0c5c63bd4c54301bf5897ce15dacfe4660aa9b8555a04d99ab9b42a",
+    "src/sort.h": "d70f73f5542845765476670e7f1ad6559b8286e6efa93170417a602dc9a278d8"
+  },
+  "note": "These files describe the machine running this command; not necessarily Codespaces."
+}

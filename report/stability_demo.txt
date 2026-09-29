@@ -1,0 +1,9 @@
+Each record is (key, original_position); compare key ONLY.
+input     : (2,0) (1,1) (2,2)
+insertion : (1,1) (2,0) (2,2)
+  sorted=yes, same records=yes, equal-key order=preserved
+merge     : (1,1) (2,0) (2,2)
+  sorted=yes, same records=yes, equal-key order=preserved
+heap      : (1,1) (2,2) (2,0)
+  sorted=yes, same records=yes, equal-key order=changed
+One preserved example does not prove stability for all inputs.

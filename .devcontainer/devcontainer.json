@@ -1,0 +1,15 @@
+{
+  "name": "project1-sorting",
+  "dockerComposeFile": "../compose.yml",
+  "service": "lab",
+  "workspaceFolder": "/work",
+  "overrideCommand": false,
+  "remoteUser": "root",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-vscode.cpptools", "formulahendry.code-runner"],
+      "settings": {"terminal.integrated.defaultProfile.linux": "bash"}
+    }
+  },
+  "postCreateCommand": "make test"
+}
