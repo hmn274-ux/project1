@@ -58,7 +58,7 @@ static void printEnvironment(void) {
     puts("extra_record_bytes excludes indices, pointers, call stack and benchmark buffers");
 }
 
-static int runExperiments(int csv) {
+static void printHeader(int csv) {
     if (csv) {
         puts("input,n,algorithm,repetitions,mean_ms,comparisons,moves,extra_record_bytes,max_recursion_depth,sorted,permutation_preserved,equal_key_order");
     } else {
@@ -68,6 +68,30 @@ static int runExperiments(int csv) {
                "input", "n", "sort", "mean_ms", "comparisons", "moves",
                "extra_B", "depth", "order");
     }
+}
+
+static void printResult(int csv, InputShape shape, size_t n,
+                        const SortAlgorithm *algorithm, const SortStats *stats,
+                        const Validation *result, double meanMs) {
+    const char *order = !result->hasEqualKeys ? "n/a" :
+                       (result->stableOnInput ? "yes" : "no");
+    if (csv) {
+        printf("%s,%zu,%s,%u,%.6f,%" PRIu64 ",%" PRIu64
+               ",%zu,%zu,yes,yes,%s\n", INPUT_NAMES[shape], n,
+               algorithm->name, REPETITIONS, meanMs,
+               stats->comparisons, stats->moves, stats->extraRecordBytes,
+               stats->maxRecursionDepth, order);
+    } else {
+        printf("%-11s %5zu %-9s %10.6f %12" PRIu64 " %12" PRIu64
+               " %9zu %5zu %7s\n", INPUT_NAMES[shape], n,
+               algorithm->name, meanMs, stats->comparisons,
+               stats->moves, stats->extraRecordBytes,
+               stats->maxRecursionDepth, order);
+    }
+}
+
+static int runExperiments(int csv) {
+    printHeader(csv);
     for (size_t si = 0; si < sizeof(SIZES) / sizeof(SIZES[0]); si++) {
         size_t n = SIZES[si];
         Record *input = malloc(n * sizeof(*input));
@@ -85,21 +109,8 @@ static int runExperiments(int csv) {
                     free(input);
                     return 0;
                 }
-                const char *order = !result.hasEqualKeys ? "n/a" :
-                                   (result.stableOnInput ? "yes" : "no");
-                if (csv) {
-                    printf("%s,%zu,%s,%u,%.6f,%" PRIu64 ",%" PRIu64
-                           ",%zu,%zu,yes,yes,%s\n", INPUT_NAMES[shape], n,
-                           ALGORITHMS[ai].name, REPETITIONS, meanMs,
-                           stats.comparisons, stats.moves, stats.extraRecordBytes,
-                           stats.maxRecursionDepth, order);
-                } else {
-                    printf("%-11s %5zu %-9s %10.6f %12" PRIu64 " %12" PRIu64
-                           " %9zu %5zu %7s\n", INPUT_NAMES[shape], n,
-                           ALGORITHMS[ai].name, meanMs, stats.comparisons,
-                           stats.moves, stats.extraRecordBytes,
-                           stats.maxRecursionDepth, order);
-                }
+                printResult(csv, (InputShape)shape, n, &ALGORITHMS[ai],
+                            &stats, &result, meanMs);
             }
         }
         free(input);
