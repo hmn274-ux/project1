@@ -1,0 +1,31 @@
+{
+  "provenance": "User-reported Codespaces execution; transcribed from terminal output supplied in chat. Not rerun by the assistant.",
+  "reported_at": "2026-09-30T22:29:40+09:00",
+  "measured_at": null,
+  "reported_location": "GitHub Codespaces",
+  "terminal_prompt": "root@1ef25dc6e2d9:/work#",
+  "cpu_model": null,
+  "os_version": null,
+  "source_commit_verified": false,
+  "compiler": "GCC 14.2.0",
+  "build_flags": "-std=c17 -Wall -Wextra -Wpedantic -O2",
+  "sizeof_Record": 16,
+  "sizeof_int": 4,
+  "sizeof_size_t": 8,
+  "clock": "process CPU time; counters included; input copying and validation excluded",
+  "CLOCKS_PER_SEC": 1000000,
+  "base_seed": 20260930,
+  "case_seed": "base_seed+n",
+  "repetitions": 5,
+  "random_generator": "xorshift32",
+  "shuffle": "Fisher-Yates using modulo",
+  "few_unique_keys": "0..15",
+  "other_shapes": "permutation of 0..n-1",
+  "extra_record_bytes_excludes": [
+    "indices",
+    "pointers",
+    "call stack",
+    "benchmark buffers"
+  ],
+  "note": "Null environment fields were not present in the supplied output. Exact source commit and CPU identity were not verified. All 48 non-time result rows match the existing measurement."
+}

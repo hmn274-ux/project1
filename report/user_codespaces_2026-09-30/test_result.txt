@@ -1,0 +1,2 @@
+PASS: 3313 input cases x 3 algorithms; 156307 checks.
+Correctness, record preservation, stability, counters and benchmark verified.
